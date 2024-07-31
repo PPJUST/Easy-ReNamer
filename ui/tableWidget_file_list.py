@@ -5,7 +5,7 @@ from PySide6.QtCore import Signal, QItemSelectionModel
 from PySide6.QtGui import QDragEnterEvent, QPixmap, Qt
 from PySide6.QtWidgets import QTableWidget, QHeaderView, QTableWidgetItem, QAbstractItemView, QMessageBox
 
-from module import function_file_item, function_normal
+from module import function_file_item, function_normal, WindowsSorted
 from module.class_.class_rename_info import RenameInfo
 from module.class_.class_rename_rule import RenameRule
 
@@ -48,23 +48,28 @@ class TabWidgetFileList(QTableWidget):
         """排序行项目"""
         function_normal.print_function_info()
         if column == _title_line.index('文件名'):
-            # 先清空
-            # 先读取原排序方法（清空布局后会重置为None，所以需要提前读取）
+            # 更新排序方法
             if self._current_order is None:
-                order = 'ASC'
+                self._current_order = 'ASC'
             elif self._current_order == 'ASC':
-                order = 'DESC'
+                self._current_order = 'DESC'
             elif self._current_order == 'DESC':
-                order = 'ASC'
+                self._current_order = 'ASC'
             else:
-                order = 'ASC'
-            paths = self.clear_items()
-            # 再排序
-            paths_sorted = function_normal.sort_paths_by_filename(paths, order)
-            # 最后重新插入
-            self.insert_path_item(paths_sorted)
-            # 更新排序类型
-            self._current_order = order
+                self._current_order = 'ASC'
+            # 冒泡排序（逐个上移/下移）
+            n = self.rowCount()
+            for i in range(n):
+                for j in range(n - i - 1):
+                    # 提取相邻两行的文件名，按排序规则进行排序后判断是否需要互换位置
+                    filename_1 = self.item(j, _title_line.index('预览')).data(_data_role).filename_need
+                    filename_2 = self.item(j+1, _title_line.index('预览')).data(_data_role).filename_need
+                    joined_list = [filename_1, filename_2]
+                    sorted_list = WindowsSorted.sort_list(joined_list, self._current_order)
+                    if joined_list != sorted_list:
+                        self.change_item_position(j, j+1)
+            # 刷新预览文件名
+            self.calc_new_filename()
 
     def insert_path_item(self, paths: Union[list, str]):
         """插入路径行项目"""
@@ -301,6 +306,15 @@ class TabWidgetFileList(QTableWidget):
         self.calc_new_filename()
         self._current_order = None
 
+    def change_item_position(self, row_1, row_2):
+        """互换两个行项目的位置"""
+        function_normal.print_function_info()
+        for column in range(self.columnCount()):
+            item_1 = self.takeItem(row_1, column)
+            item_2 = self.takeItem(row_2, column)
+            self.setItem(row_1, column, item_2)
+            self.setItem(row_2, column, item_1)
+
     def move_item_top(self):
         """将当前项目移动到顶部"""
         function_normal.print_function_info()
@@ -369,15 +383,16 @@ class TabWidgetFileList(QTableWidget):
     def clear_items(self):
         """清空所有项目"""
         function_normal.print_function_info()
-        remove_paths = []
+        removed_path_class_dict = dict()
         while self.rowCount():
             path = self.item(0, _title_line.index('路径')).text()
-            remove_paths.append(path)
+            info_class = self.item(0, _title_line.index('预览')).data(_data_role)
+            removed_path_class_dict[path] = info_class
             self.removeRow(0)
 
         self._current_order = None
 
-        return remove_paths
+        return removed_path_class_dict
 
     def dragEnterEvent(self, event: QDragEnterEvent):
         if event.mimeData().hasUrls():

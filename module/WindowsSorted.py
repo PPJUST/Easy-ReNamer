@@ -33,6 +33,7 @@ def sort_list(keys_list: list, order: str = 'ASC') -> Union[list, SystemExit]:
     locale.setlocale(locale.LC_ALL, '')
 
     # 冒泡排序
+    keys_list = keys_list.copy()
     n = len(keys_list)
     for i in range(n):
         for j in range(n - i - 1):
