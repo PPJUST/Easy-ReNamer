@@ -63,11 +63,11 @@ class TabWidgetFileList(QTableWidget):
                 for j in range(n - i - 1):
                     # 提取相邻两行的文件名，按排序规则进行排序后判断是否需要互换位置
                     filename_1 = self.item(j, _title_line.index('预览')).data(_data_role).filename_need
-                    filename_2 = self.item(j+1, _title_line.index('预览')).data(_data_role).filename_need
+                    filename_2 = self.item(j + 1, _title_line.index('预览')).data(_data_role).filename_need
                     joined_list = [filename_1, filename_2]
                     sorted_list = WindowsSorted.sort_list(joined_list, self._current_order)
                     if joined_list != sorted_list:
-                        self.change_item_position(j, j+1)
+                        self.change_item_position(j, j + 1)
             # 刷新预览文件名
             self.calc_new_filename()
 
@@ -184,10 +184,14 @@ class TabWidgetFileList(QTableWidget):
         old_path = rename_info_class.path_need
         final_path = rename_info_class.path_renamed
         final_filetitle = rename_info_class.filetitle_renamed
-        # 先判断文件名是否符合命名规则（只有空格或.等情况）
-        if final_filetitle.count(' ') + final_filetitle.count('.') == len(final_filetitle):
+        # 判断路径是否变化，是否需要执行重命名
+        if old_path == final_path:
+            rename_info_class.set_result_skipped()
+        # 判断文件名是否符合命名规则（只有空格或.等情况）
+        elif final_filetitle.count(' ') + final_filetitle.count('.') == len(final_filetitle):
             rename_info_class.set_result_unknown_error()
-        else:  # 否则正常执行重命名操作
+        # 否则正常执行重命名操作
+        else:
             try:
                 os.rename(old_path, final_path)
                 rename_info_class.set_result_renamed()
