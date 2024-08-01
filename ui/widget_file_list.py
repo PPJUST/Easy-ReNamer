@@ -44,8 +44,8 @@ class WidgetFileList(QWidget):
         if file_path:
             self.tableWidget_file_list.insert_path_item(file_path)
 
-    def run_rename(self):
-        self.tableWidget_file_list.rename()
+    def run_rename(self, is_auto_dup):
+        self.tableWidget_file_list.rename(is_auto_dup)
 
     def cancel_rename(self):
         self.tableWidget_file_list.cancel_rename()

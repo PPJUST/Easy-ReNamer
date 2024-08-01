@@ -73,9 +73,9 @@ class MainWindow(QMainWindow):
         self.class_collect.update(rule_class)
         self.widget_file_list.calc_filename()
 
-    def run_rename(self):
+    def run_rename(self, is_auto_dup):
         """执行重命名操作"""
-        self.widget_file_list.run_rename()
+        self.widget_file_list.run_rename(is_auto_dup)
 
     def cancel_rename(self):
         """撤销重命名操作"""

@@ -14,7 +14,7 @@ class TypePattern:
         self.is_enable = is_enable
         self.pattern = pattern
         self.pattern_preview = None
-        # 随机数字
+        # 数字编号
         self.digit_start = None
         self.digit_step = None
         self.digit_length = None
@@ -27,7 +27,7 @@ class TypePattern:
         self.random_length = None
 
     def update_digit(self, digit_start, digit_step, digit_length, auto_fill):
-        """更新数字规则"""
+        """更新数字编号规则"""
         self.digit_start = digit_start
         self.digit_step = digit_step
         self.digit_length = digit_length
@@ -50,13 +50,14 @@ class TypePattern:
         """计算模板的预览文本"""
         """
         * 原文件名
-        " 数字
+        ##/" 数字编号
         ? 随机字符
         / 父目录名
         """
         if self.pattern:
             self.pattern_preview = self.pattern.replace('*', '<原文件名>')
-            self.pattern_preview = self.pattern_preview.replace('"', '<数字>')
+            self.pattern_preview = self.pattern_preview.replace('##', '<数字编号>')
+            self.pattern_preview = self.pattern_preview.replace('"', '<数字编号>')
             self.pattern_preview = self.pattern_preview.replace('?', '<随机字符>')
             self.pattern_preview = self.pattern_preview.replace('/', '<父目录名>')
 
@@ -97,6 +98,7 @@ class TypePattern:
         new_filetitle = filetitle
         if self.pattern:
             new_filetitle = self.pattern.replace('*', filetitle)  # 替换原文件名
+            new_filetitle = new_filetitle.replace('##', self.get_current_digit(index))  # 替换数字编号
             new_filetitle = new_filetitle.replace('"', self.get_current_digit(index))  # 替换数字编号
             new_filetitle = new_filetitle.replace('?', self.get_current_random_character())  # 替换随机字符序列
             new_filetitle = new_filetitle.replace('/', self.get_parent_dirname(path))  # 替换父目录名

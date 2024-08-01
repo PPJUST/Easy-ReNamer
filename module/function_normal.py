@@ -210,14 +210,14 @@ def calc_cancelled_path(rename_info_class: RenameInfo) -> RenameInfo:
 def get_icon_result(result: str):
     """获取结果对应的图标"""
     if result == 'renamed':
-        return base64.b64decode(right_base64)
+        return base64.b64decode(right_base64), '完成'
     elif result == 'unknown_error':
-        return base64.b64decode(error_base64)
+        return base64.b64decode(error_base64), '未知错误'
     elif result == 'skipped':
-        return base64.b64decode(skip_base64)
+        return base64.b64decode(skip_base64), '跳过'
     elif result == 'not_exist':
-        return base64.b64decode(not_exist_base64)
+        return base64.b64decode(not_exist_base64), '文件不存在'
     elif result == 'occupied':
-        return base64.b64decode(occupied_base64)
+        return base64.b64decode(occupied_base64), '文件被占用'
     elif result == 'cancelled':
-        return base64.b64decode(cancelled_base64)
+        return base64.b64decode(cancelled_base64), '已撤销重命名操作'

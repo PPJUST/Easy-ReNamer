@@ -27,8 +27,8 @@ class TabWidgetFileList(QTableWidget):
         self.hideColumn(_title_line.index('路径'))  # 隐藏路径列，美观
         self.setColumnWidth(_title_line.index('类型'), _min_width)
         self.setColumnWidth(_title_line.index('进度'), _min_width)
-        self.setColumnWidth(_title_line.index('文件名'), (390 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为390
-        self.setColumnWidth(_title_line.index('预览'), (390 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为390
+        self.setColumnWidth(_title_line.index('文件名'), (378 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为378
+        self.setColumnWidth(_title_line.index('预览'), (378 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为378
 
         # ui设置
         self.setAcceptDrops(True)
@@ -139,7 +139,7 @@ class TabWidgetFileList(QTableWidget):
             if self.item(row, _title_line.index('文件名')).text() != need_filename:
                 self.item(row, _title_line.index('文件名')).setText(need_filename)
 
-    def rename(self):
+    def rename(self, is_auto_dup):
         """执行重命名"""
         function_normal.print_function_info()
         for row in range(self.rowCount()):
@@ -150,11 +150,14 @@ class TabWidgetFileList(QTableWidget):
             else:
                 rename_info_class = function_normal.calc_final_path(rename_info_class)  # 更新无重复文件名
                 if rename_info_class.is_dup:  # 存在重复文件名时进行提示
-                    reply = self.show_dup_confirm_dialog(rename_info_class.filename_renamed)
-                    if reply:
+                    if is_auto_dup:  # 自动处理重命名冲突
                         rename_info_class = self.rename_and_update_class(rename_info_class)  # 更新重命名结果
                     else:
-                        rename_info_class.set_result_skipped()
+                        reply = self.show_dup_confirm_dialog(rename_info_class.filename_renamed)
+                        if reply:
+                            rename_info_class = self.rename_and_update_class(rename_info_class)  # 更新重命名结果
+                        else:
+                            rename_info_class.set_result_skipped()
                 else:
                     rename_info_class = self.rename_and_update_class(rename_info_class)  # 更新重命名结果
 
@@ -240,10 +243,12 @@ class TabWidgetFileList(QTableWidget):
     def set_result_icon(self, row: int, result: str):
         """设置重命名结果的图标"""
         function_normal.print_function_info()
+        icon_base64, tip = function_normal.get_icon_result(result)
         pixmap = QPixmap()
-        pixmap.loadFromData(function_normal.get_icon_result(result))
+        pixmap.loadFromData(icon_base64)
         item_icon = QTableWidgetItem()
         item_icon.setData(1, pixmap)
+        item_icon.setToolTip(tip)
         self.setItem(row, _title_line.index('进度'), item_icon)
 
     def set_cell_data(self, row: int, rename_info_class):

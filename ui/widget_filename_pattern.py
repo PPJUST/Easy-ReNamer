@@ -82,7 +82,7 @@ class WidgetFilenamePattern(QWidget):
     def _show_more_option(self):
         """显示更多选项"""
         pattern = self.ui.lineEdit_pattern.text()
-        if '"' in pattern:
+        if '##' in pattern or '"' in pattern:
             self._show_layout_digit(True)
         else:
             self._show_layout_digit(False)

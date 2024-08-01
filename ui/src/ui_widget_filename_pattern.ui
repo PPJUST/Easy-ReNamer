@@ -39,7 +39,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_pattern"/>
+      <widget class="QLineEdit" name="lineEdit_pattern">
+       <property name="placeholderText">
+        <string>例: *_## 为&lt;原文件名&gt;_&lt;数字编号&gt;</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -116,7 +120,8 @@
              <item>
               <widget class="QLabel" name="label_5">
                <property name="text">
-                <string>&quot; 插入数字</string>
+                <string>##或&quot;
+插入数字编号</string>
                </property>
               </widget>
              </item>
@@ -249,7 +254,8 @@
              <item>
               <widget class="QLabel" name="label_4">
                <property name="text">
-                <string>? 插入随机字符</string>
+                <string>?
+插入随机字符</string>
                </property>
               </widget>
              </item>

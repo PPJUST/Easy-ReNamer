@@ -10,7 +10,7 @@ from ui.src.ui_widget_exec import Ui_Form
 
 
 class WidgetExec(QWidget):
-    signal_rename = Signal()
+    signal_rename = Signal(bool)
     signal_cancel = Signal()
 
     def __init__(self, parent=None):
@@ -41,7 +41,7 @@ class WidgetExec(QWidget):
 
     def emit_signal_rename(self):
         """发送信号"""
-        self.signal_rename.emit()
+        self.signal_rename.emit(self.ui.checkBox_auto_deal_dup.isChecked())
 
     def emit_signal_cancel(self):
         """发送信号"""

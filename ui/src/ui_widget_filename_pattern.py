@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_widget_filename_patternGFmIxt.ui'
+## Form generated from reading UI file 'ui_widget_filename_patternlfVxGc.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.3
 ##
@@ -325,14 +325,17 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.checkBox_pattern.setText(QCoreApplication.translate("Form", u"\u547d\u540d\u89c4\u5219\uff1a", None))
+        self.lineEdit_pattern.setPlaceholderText(QCoreApplication.translate("Form", u"\u4f8b: *_## \u4e3a<\u539f\u6587\u4ef6\u540d>_<\u6570\u5b57\u7f16\u53f7>", None))
         self.label_10.setText(QCoreApplication.translate("Form", u"\u7b26\u53f7\u8bf4\u660e\uff1a", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"* \u63d2\u5165\u539f\u6587\u4ef6\u540d", None))
-        self.label_5.setText(QCoreApplication.translate("Form", u"\" \u63d2\u5165\u6570\u5b57", None))
+        self.label_5.setText(QCoreApplication.translate("Form", u"##\u6216\"\n"
+"\u63d2\u5165\u6570\u5b57\u7f16\u53f7", None))
         self.label_6.setText(QCoreApplication.translate("Form", u"\u8d77\u59cb", None))
         self.label_7.setText(QCoreApplication.translate("Form", u"\u6b65\u957f", None))
         self.label_8.setText(QCoreApplication.translate("Form", u"\u4f4d\u6570", None))
         self.checkBox_auto_fill_digit_length.setText(QCoreApplication.translate("Form", u"\u81ea\u52a8\u8865\u9f50\u4f4d\u6570", None))
-        self.label_4.setText(QCoreApplication.translate("Form", u"? \u63d2\u5165\u968f\u673a\u5b57\u7b26", None))
+        self.label_4.setText(QCoreApplication.translate("Form", u"?\n"
+"\u63d2\u5165\u968f\u673a\u5b57\u7b26", None))
         self.checkBox_random_digit.setText(QCoreApplication.translate("Form", u"\u6570\u5b57", None))
         self.checkBox_random_lowercase.setText(QCoreApplication.translate("Form", u"\u5c0f\u5199\u5b57\u6bcd", None))
         self.checkBox_random_capital.setText(QCoreApplication.translate("Form", u"\u5927\u5199\u5b57\u6bcd", None))
