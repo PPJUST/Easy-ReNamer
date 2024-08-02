@@ -1,0 +1,1 @@
+python -m nuitka --standalone --onefile --remove-output --mingw64 --windows-console-mode=disable --windows-icon-from-ico=res\icon\app.ico --enable-plugin=pyside6 main.py
