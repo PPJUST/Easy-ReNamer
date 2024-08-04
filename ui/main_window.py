@@ -1,6 +1,10 @@
+import base64
+
+from PySide6.QtGui import QPixmap, QIcon
 from PySide6.QtWidgets import QMainWindow
 
 from module.class_.class_rename_rule import RenameRule
+from res.icon import app_base64
 from ui.src.ui_main import Ui_MainWindow
 from ui.widget_delete import WidgetDelete
 from ui.widget_exec import WidgetExec
@@ -18,6 +22,11 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        # 设置图标
+        pixmap = QPixmap()
+        pixmap.loadFromData(base64.b64decode(app_base64))
+        self.setWindowIcon(QIcon(pixmap))
 
         self.class_collect = RenameRule()
 
