@@ -36,15 +36,20 @@ class MethodNormal:
             super().__init__(index=index, count=count)
 
         def rename_method(self, filetitle: str):
-            if self.index > 0:
-                index = self.index - 1
+            # index为第n个字符开始，将其设置为0和1为同一个含义
+            if self.index == 0:
+                index = 0
+                new_filetitle = filetitle[index + self.count:]
             else:
-                if abs(self.index) <= len(filetitle):
-                    index = len(filetitle) + self.index
+                if self.index > 0:
+                    index = self.index - 1
                 else:
-                    index = 0
+                    if abs(self.index) <= len(filetitle):
+                        index = len(filetitle) + self.index
+                    else:
+                        index = 0
+                new_filetitle = filetitle[0:index] + filetitle[index + self.count:]
 
-            new_filetitle = filetitle[0:index] + filetitle[index + self.count:]
             return new_filetitle
 
     class Replace(_Model):
