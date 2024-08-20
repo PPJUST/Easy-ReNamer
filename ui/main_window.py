@@ -62,6 +62,7 @@ class MainWindow(QMainWindow):
         self.ui.verticalLayout_place.addWidget(self.widget_delete)
         self.widget_delete.signal_delete_index.connect(self.collect_rename_rule)
         self.widget_delete.signal_delete_character.connect(self.collect_rename_rule)
+        self.widget_delete.signal_delete_index_after.connect(self.collect_rename_rule)
         # 改
         self.widget_replace = WidgetReplace()
         self.ui.verticalLayout_place.addWidget(self.widget_replace)

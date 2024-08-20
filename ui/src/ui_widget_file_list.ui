@@ -123,9 +123,16 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_add">
+      <widget class="QPushButton" name="pushButton_add_file">
        <property name="text">
-        <string>添加</string>
+        <string>添加文件</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_add_folder">
+       <property name="text">
+        <string>添加文件夹</string>
        </property>
       </widget>
      </item>

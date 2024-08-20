@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_widget_file_listFcGliJ.ui'
+## Form generated from reading UI file 'ui_widget_file_listTqyBOE.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.3
 ##
@@ -17,7 +17,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(365, 309)
+        Form.resize(368, 309)
         self.verticalLayout_2 = QVBoxLayout(Form)
         self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -76,10 +76,15 @@ class Ui_Form(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
-        self.pushButton_add = QPushButton(Form)
-        self.pushButton_add.setObjectName(u"pushButton_add")
+        self.pushButton_add_file = QPushButton(Form)
+        self.pushButton_add_file.setObjectName(u"pushButton_add_file")
 
-        self.horizontalLayout.addWidget(self.pushButton_add)
+        self.horizontalLayout.addWidget(self.pushButton_add_file)
+
+        self.pushButton_add_folder = QPushButton(Form)
+        self.pushButton_add_folder.setObjectName(u"pushButton_add_folder")
+
+        self.horizontalLayout.addWidget(self.pushButton_add_folder)
 
         self.pushButton_remove = QPushButton(Form)
         self.pushButton_remove.setObjectName(u"pushButton_remove")
@@ -110,7 +115,8 @@ class Ui_Form(object):
         self.toolButton_move_up.setText(QCoreApplication.translate("Form", u"...", None))
         self.toolButton_move_down.setText(QCoreApplication.translate("Form", u"...", None))
         self.toolButton_move_bottom.setText(QCoreApplication.translate("Form", u"...", None))
-        self.pushButton_add.setText(QCoreApplication.translate("Form", u"\u6dfb\u52a0", None))
+        self.pushButton_add_file.setText(QCoreApplication.translate("Form", u"\u6dfb\u52a0\u6587\u4ef6", None))
+        self.pushButton_add_folder.setText(QCoreApplication.translate("Form", u"\u6dfb\u52a0\u6587\u4ef6\u5939", None))
         self.pushButton_remove.setText(QCoreApplication.translate("Form", u"\u79fb\u9664", None))
         self.pushButton_clear.setText(QCoreApplication.translate("Form", u"\u6e05\u7a7a", None))
     # retranslateUi

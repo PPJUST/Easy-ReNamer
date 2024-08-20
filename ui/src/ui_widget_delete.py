@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_widget_deleteKJUCBg.ui'
+## Form generated from reading UI file 'ui_widget_deleteiIIVPm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.3
 ##
@@ -17,7 +17,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(298, 81)
+        Form.resize(301, 108)
         self.verticalLayout = QVBoxLayout(Form)
         self.verticalLayout.setSpacing(3)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -77,10 +77,36 @@ class Ui_Form(object):
 
         self.horizontalLayout.addWidget(self.label_2)
 
-        self.horizontalLayout.setStretch(1, 1)
-        self.horizontalLayout.setStretch(3, 1)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
+
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setSpacing(3)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.checkBox_delete_index_after = QCheckBox(self.groupBox)
+        self.checkBox_delete_index_after.setObjectName(u"checkBox_delete_index_after")
+
+        self.horizontalLayout_3.addWidget(self.checkBox_delete_index_after)
+
+        self.spinBox_index_del_after = QSpinBox(self.groupBox)
+        self.spinBox_index_del_after.setObjectName(u"spinBox_index_del_after")
+        self.spinBox_index_del_after.setMinimum(-999)
+        self.spinBox_index_del_after.setMaximum(999)
+
+        self.horizontalLayout_3.addWidget(self.spinBox_index_del_after)
+
+        self.label_3 = QLabel(self.groupBox)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout_3.addWidget(self.label_3)
+
+        self.horizontalLayout_3.setStretch(2, 1)
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
 
         self.verticalLayout.addWidget(self.groupBox)
@@ -98,5 +124,7 @@ class Ui_Form(object):
         self.checkBox_delete_index.setText(QCoreApplication.translate("Form", u"\u4ece\u7b2c", None))
         self.label.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26\u5f00\u59cb\uff0c\u5220\u9664", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26", None))
+        self.checkBox_delete_index_after.setText(QCoreApplication.translate("Form", u"\u5220\u9664\u7b2c", None))
+        self.label_3.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26\u540e\u7684\u5168\u90e8\u5b57\u7b26", None))
     # retranslateUi
 

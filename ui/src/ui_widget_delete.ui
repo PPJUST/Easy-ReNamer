@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>298</width>
-    <height>81</height>
+    <width>301</width>
+    <height>108</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -68,7 +68,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,0,1,0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="spacing">
          <number>3</number>
         </property>
@@ -110,6 +110,50 @@
          <widget class="QLabel" name="label_2">
           <property name="text">
            <string>个字符</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,1">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QCheckBox" name="checkBox_delete_index_after">
+          <property name="text">
+           <string>删除第</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_index_del_after">
+          <property name="minimum">
+           <number>-999</number>
+          </property>
+          <property name="maximum">
+           <number>999</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>个字符后的全部字符</string>
           </property>
          </widget>
         </item>

@@ -16,6 +16,7 @@ class WidgetFilenamePattern(QWidget):
 
         # self._show_layout_digit(False)  # 隐藏数字的更多选项控件
         # self._show_layout_char(False)# 隐藏字符的更多选项控件
+        self.set_tips()
         self.change_to_changed()
 
         self.ui.checkBox_pattern.stateChanged.connect(self.emit_signal)
@@ -36,6 +37,19 @@ class WidgetFilenamePattern(QWidget):
         font = QFont()
         font.setPointSize(12)
         self.ui.lineEdit_pattern.setFont(font)
+
+    def set_tips(self):
+        """设置说明文本"""
+        tips_auto_dig = '示例：\n1 --> 001\n2 --> 002'
+        self.ui.checkBox_auto_fill_digit_length.setToolTip(tips_auto_dig)
+
+        tips_pattern = ('示例：'
+                        '\n1.修改为指定文本（例如修改为"目标文件名"）：目标文件名'
+                        '\n2. 在文件名前添加父文件夹名（即<父目录名> - <原文件名>）：/ - *'
+                        '\n3.在文件名后添加随机字符（即<原文件名>_<随机字符>）：*_?'
+                        '\n4.在文件名后添加数字编号（即<原文件名>#<数字编号>）：*###')
+        self.ui.checkBox_pattern.setToolTip(tips_pattern)
+        self.ui.lineEdit_pattern.setToolTip(tips_pattern)
 
     def emit_signal(self):
         """发送信号"""

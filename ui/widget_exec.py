@@ -18,12 +18,21 @@ class WidgetExec(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
+        self.set_tips()
         self._set_icon()
 
         # 设置槽函数
         self.ui.pushButton_quit.clicked.connect(lambda: sys.exit())
         self.ui.pushButton_rename.clicked.connect(self.emit_signal_rename)
         self.ui.pushButton_cancel.clicked.connect(self.emit_signal_cancel)
+
+    def set_tips(self):
+        """设置说明文本"""
+        tips_auto_dup = '不再弹出重复文件名提示，在文件名后自动添加后缀\n（参照Windows规则，在文件名后添加" (2)“等后缀'
+        self.ui.checkBox_auto_deal_dup.setToolTip(tips_auto_dup)
+
+        tips_cancel = '撤销对应文件的所有重命名操作，恢复到最开始的文件名'
+        self.ui.pushButton_cancel.setToolTip(tips_cancel)
 
     def _set_icon(self):
         """设置图标"""

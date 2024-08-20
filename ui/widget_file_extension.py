@@ -16,19 +16,25 @@ class WidgetFileExtension(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
+        self.set_tips()
         self.change_to_changed()
 
         self.ui.checkBox_change_to.stateChanged.connect(self.emit_signal_change_to)
         self.ui.lineEdit_file_extension.textChanged.connect(self.change_to_changed)
         self.ui.checkBox_lowercase.stateChanged.connect(self.emit_signal_lowercase)
-        self.ui.checkBox_lowercase.stateChanged.connect(self.set_button_group_lowercase)
+        self.ui.checkBox_lowercase.stateChanged.connect(self.set_exclusive_group_lowercase)
         self.ui.checkBox_capital.stateChanged.connect(self.emit_signal_capital)
-        self.ui.checkBox_capital.stateChanged.connect(self.set_button_group_capital)
+        self.ui.checkBox_capital.stateChanged.connect(self.set_exclusive_group_capital)
         self.ui.checkBox_real_type.stateChanged.connect(self.emit_signal_real_type)
 
         # 屏蔽功能
         self.ui.checkBox_real_type.setEnabled(False)
         self.ui.checkBox_real_type.setVisible(False)
+
+    def set_tips(self):
+        """设置说明文本"""
+        tips_change_to = '修改后缀名，请勿将文件的后缀名修改为空'
+        self.ui.checkBox_change_to.setToolTip(tips_change_to)
 
     def emit_signal_change_to(self):
         """发送信号"""
@@ -41,7 +47,7 @@ class WidgetFileExtension(QWidget):
     def change_to_changed(self):
         """选项变动"""
         text = self.ui.lineEdit_file_extension.text()
-        if len(text):
+        if len(text.strip()):
             self.ui.checkBox_change_to.setCheckable(True)
             self.ui.checkBox_change_to.setChecked(True)
         else:
@@ -71,21 +77,21 @@ class WidgetFileExtension(QWidget):
         rule_class = TypeFileExtension.ChangeToRealType(is_enable)
         self.signal_change_to_real_type.emit(rule_class)
 
-    def set_button_group_lowercase(self):
-        """设置大小写冲突的按钮组"""
-        button_low = self.ui.checkBox_lowercase
-        button_cap = self.ui.checkBox_capital
+    def set_exclusive_group_lowercase(self):
+        """大小写互斥勾选"""
+        group_low = self.ui.checkBox_lowercase
+        group_cap = self.ui.checkBox_capital
 
-        if button_low.isChecked() and button_cap.isChecked():
-            button_cap.setChecked(False)
+        if group_low.isChecked() and group_cap.isChecked():
+            group_cap.setChecked(False)
 
-    def set_button_group_capital(self):
-        """设置大小写冲突的按钮组"""
-        button_low = self.ui.checkBox_lowercase
-        button_cap = self.ui.checkBox_capital
+    def set_exclusive_group_capital(self):
+        """大小写互斥勾选"""
+        group_low = self.ui.checkBox_lowercase
+        group_cap = self.ui.checkBox_capital
 
-        if button_low.isChecked() and button_cap.isChecked():
-            button_low.setChecked(False)
+        if group_low.isChecked() and group_cap.isChecked():
+            group_low.setChecked(False)
 
 
 if __name__ == '__main__':

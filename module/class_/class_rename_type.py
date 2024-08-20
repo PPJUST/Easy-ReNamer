@@ -6,6 +6,8 @@ import string
 from module import function_normal
 from module.class_.class_rename_method import MethodNormal, MethodFileExtension, MethodConvert
 
+import re
+
 
 class TypePattern:
     """重命名类型类-通用模板"""
@@ -56,6 +58,7 @@ class TypePattern:
         """
         if self.pattern:
             self.pattern_preview = self.pattern.replace('*', '<原文件名>')
+            self.pattern_preview = re.sub(r'(?<!#)###(?!#)', '#"', self.pattern_preview)  # 单独处理###的情况（用于显示#1）
             self.pattern_preview = self.pattern_preview.replace('##', '<数字编号>')
             self.pattern_preview = self.pattern_preview.replace('"', '<数字编号>')
             self.pattern_preview = self.pattern_preview.replace('?', '<随机字符>')
@@ -98,6 +101,7 @@ class TypePattern:
         new_filetitle = filetitle
         if self.pattern:
             new_filetitle = self.pattern.replace('*', filetitle)  # 替换原文件名
+            new_filetitle = re.sub(r'(?<!#)###(?!#)', '#"', new_filetitle)  # 单独处理###的情况（用于显示#1）
             new_filetitle = new_filetitle.replace('##', self.get_current_digit(index))  # 替换数字编号
             new_filetitle = new_filetitle.replace('"', self.get_current_digit(index))  # 替换数字编号
             new_filetitle = new_filetitle.replace('?', self.get_current_random_character())  # 替换随机字符序列
@@ -154,6 +158,13 @@ class TypeNormal:
         def __init__(self, is_enable, start_index, delete_count):
             super().__init__(is_enable)
             self.rule = MethodNormal.DeleteIndex(start_index, delete_count)
+
+    class DeleteIndexAfter(_Model):
+        """删除N个字符后的所有字符"""
+
+        def __init__(self, is_enable, index):
+            super().__init__(is_enable)
+            self.rule = MethodNormal.DeleteIndex(index + 1, 999)  # 该类型为n个字符后，所以需要+1.删除字符个数为999即可
 
 
 class TypeConvert:
