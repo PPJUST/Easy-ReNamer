@@ -261,11 +261,16 @@ class TabWidgetFileList(QTableWidget):
         self.item(row, _title_line.index('预览')).setData(_data_role, rename_info_class)
 
     def paths_showed(self):
-        """当前显示的路径列表（视图中所有的路径列表）"""
+        """当前显示的路径列表"""
         function_normal.print_function_info()
         paths = []
         for row in range(self.rowCount()):
-            path = self.item(row, _title_line.index('路径')).text()
+            # 先尝试提取单元格中的重命名信息类，如果不存在则提取路径列的文本
+            info_class:RenameInfo = self.item(row, _title_line.index('文件名')).data(_data_role)
+            if info_class:
+                path = info_class.path_need
+            else:
+                path = self.item(row, _title_line.index('路径')).text()
             paths.append(path)
         return paths
 
