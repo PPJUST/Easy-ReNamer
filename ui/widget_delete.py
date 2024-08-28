@@ -16,8 +16,6 @@ class WidgetDelete(QWidget):
         self.ui.setupUi(self)
 
         self.set_tips()
-        self.delete_character_changed()
-        self.delete_index_after_changed()
 
         self.ui.checkBox_delete_character.stateChanged.connect(self.emit_signal_delete_character)
         self.ui.lineEdit_delete_character.textChanged.connect(self.delete_character_changed)
@@ -44,8 +42,11 @@ class WidgetDelete(QWidget):
 
     def emit_signal_delete_character(self):
         """发送信号"""
-        is_enable = self.ui.checkBox_delete_character.isChecked()
         delete_char = self.ui.lineEdit_delete_character.text()
+        if delete_char:
+            is_enable = self.ui.checkBox_delete_character.isChecked()
+        else:
+            is_enable = False
 
         rule_class = TypeNormal.DeleteChar(is_enable, delete_char)
         self.signal_delete_character.emit(rule_class)
@@ -54,11 +55,7 @@ class WidgetDelete(QWidget):
         """选项变动"""
         text = self.ui.lineEdit_delete_character.text()
         if len(text):
-            self.ui.checkBox_delete_character.setCheckable(True)
             self.ui.checkBox_delete_character.setChecked(True)
-        else:
-            self.ui.checkBox_delete_character.setCheckable(False)
-            self.ui.checkBox_delete_character.setChecked(False)
 
         self.emit_signal_delete_character()
 
@@ -73,8 +70,12 @@ class WidgetDelete(QWidget):
 
     def emit_signal_delete_after(self):
         """发送信号"""
-        is_enable = self.ui.checkBox_delete_index_after.isChecked()
+
         index = self.ui.spinBox_index_del_after.value()
+        if index not in [0, -1]:
+            is_enable = self.ui.checkBox_delete_index_after.isChecked()
+        else:
+            is_enable = False
 
         rule_class = TypeNormal.DeleteIndexAfter(is_enable, index)
         self.signal_delete_index_after.emit(rule_class)
@@ -89,11 +90,7 @@ class WidgetDelete(QWidget):
         """选项变动"""
         # 第0或-1个字符时不勾选（0个字符后和-1个字符后删除全部字符时没有任何意义）
         index = self.ui.spinBox_index_del_after.value()
-        if index in [0, -1]:
-            self.ui.checkBox_delete_index_after.setCheckable(False)
-            self.ui.checkBox_delete_index_after.setChecked(False)
-        else:
-            self.ui.checkBox_delete_index_after.setCheckable(True)
+        if index not in [0, -1]:
             self.ui.checkBox_delete_index_after.setChecked(True)
 
         self.emit_signal_delete_after()

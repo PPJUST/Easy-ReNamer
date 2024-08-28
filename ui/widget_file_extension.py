@@ -17,7 +17,6 @@ class WidgetFileExtension(QWidget):
         self.ui.setupUi(self)
 
         self.set_tips()
-        self.change_to_changed()
 
         self.ui.checkBox_change_to.stateChanged.connect(self.emit_signal_change_to)
         self.ui.lineEdit_file_extension.textChanged.connect(self.change_to_changed)
@@ -38,8 +37,11 @@ class WidgetFileExtension(QWidget):
 
     def emit_signal_change_to(self):
         """发送信号"""
-        is_enable = self.ui.checkBox_change_to.isChecked()
         file_extension = self.ui.lineEdit_file_extension.text()
+        if len(file_extension.strip()):
+            is_enable = self.ui.checkBox_change_to.isChecked()
+        else:
+            is_enable = False
 
         rule_class = TypeFileExtension.ChangeTo(is_enable, file_extension)
         self.signal_file_extension_change_to.emit(rule_class)
@@ -48,11 +50,7 @@ class WidgetFileExtension(QWidget):
         """选项变动"""
         text = self.ui.lineEdit_file_extension.text()
         if len(text.strip()):
-            self.ui.checkBox_change_to.setCheckable(True)
             self.ui.checkBox_change_to.setChecked(True)
-        else:
-            self.ui.checkBox_change_to.setCheckable(False)
-            self.ui.checkBox_change_to.setChecked(False)
 
         self.emit_signal_change_to()
 

@@ -13,17 +13,18 @@ class WidgetReplace(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        self.prefix_changed()
-
         self.ui.checkBox_replace.stateChanged.connect(self.emit_signal)
         self.ui.lineEdit_old_character.textChanged.connect(self.prefix_changed)
         self.ui.lineEdit_new_character.textChanged.connect(self.prefix_changed)
 
     def emit_signal(self):
         """发送信号"""
-        is_enable = self.ui.checkBox_replace.isChecked()
         old_char = self.ui.lineEdit_old_character.text()
         new_char = self.ui.lineEdit_new_character.text()
+        if len(old_char) and len(new_char):
+            is_enable = self.ui.checkBox_replace.isChecked()
+        else:
+            is_enable = False
 
         rule_class = TypeNormal.Replace(is_enable, old_char, new_char)
         self.signal_replace.emit(rule_class)
@@ -35,9 +36,6 @@ class WidgetReplace(QWidget):
         if len(text_old) and len(text_new):
             self.ui.checkBox_replace.setCheckable(True)
             self.ui.checkBox_replace.setChecked(True)
-        else:
-            self.ui.checkBox_replace.setCheckable(False)
-            self.ui.checkBox_replace.setChecked(False)
 
         self.emit_signal()
 

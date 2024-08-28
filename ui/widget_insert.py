@@ -15,8 +15,6 @@ class WidgetInsert(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        self.prefix_changed()
-        self.suffix_changed()
         self.insert_changed()
 
         self.ui.checkBox_add_prefix.stateChanged.connect(self.emit_signal_prefix)
@@ -29,8 +27,11 @@ class WidgetInsert(QWidget):
 
     def emit_signal_prefix(self):
         """发送信号"""
-        is_enable = self.ui.checkBox_add_prefix.isChecked()
         char = self.ui.lineEdit_add_prefix.text()
+        if len(char):
+            is_enable = self.ui.checkBox_add_prefix.isChecked()
+        else:
+            is_enable = False
 
         rule_class = TypeNormal.AddPrefix(is_enable, char)
         self.signal_add_prefix.emit(rule_class)
@@ -39,18 +40,17 @@ class WidgetInsert(QWidget):
         """选项变动"""
         text = self.ui.lineEdit_add_prefix.text()
         if len(text):
-            self.ui.checkBox_add_prefix.setCheckable(True)
             self.ui.checkBox_add_prefix.setChecked(True)
-        else:
-            self.ui.checkBox_add_prefix.setCheckable(False)
-            self.ui.checkBox_add_prefix.setChecked(False)
 
         self.emit_signal_prefix()
 
     def emit_signal_suffix(self):
         """发送信号"""
-        is_enable = self.ui.checkBox_add_suffix.isChecked()
         char = self.ui.lineEdit_add_suffix.text()
+        if len(char):
+            is_enable = self.ui.checkBox_add_suffix.isChecked()
+        else:
+            is_enable = False
 
         rule_class = TypeNormal.AddSuffix(is_enable, char)
         self.signal_add_suffix.emit(rule_class)
@@ -59,19 +59,18 @@ class WidgetInsert(QWidget):
         """选项变动"""
         text = self.ui.lineEdit_add_suffix.text()
         if len(text):
-            self.ui.checkBox_add_suffix.setCheckable(True)
             self.ui.checkBox_add_suffix.setChecked(True)
-        else:
-            self.ui.checkBox_add_suffix.setCheckable(False)
-            self.ui.checkBox_add_suffix.setChecked(False)
 
         self.emit_signal_suffix()
 
     def emit_signal_insert(self):
         """发送信号"""
-        is_enable = self.ui.checkBox_insert_index.isChecked()
         index = self.ui.spinBox_index.value()
         char = self.ui.lineEdit_insert_character.text()
+        if len(char):
+            is_enable = self.ui.checkBox_insert_index.isChecked()
+        else:
+            is_enable = False
 
         rule_class = TypeNormal.Insert(is_enable, index, char)
         self.signal_insert.emit(rule_class)
@@ -80,11 +79,7 @@ class WidgetInsert(QWidget):
         """选项变动"""
         text = self.ui.lineEdit_insert_character.text()
         if len(text):
-            self.ui.checkBox_insert_index.setCheckable(True)
             self.ui.checkBox_insert_index.setChecked(True)
-        else:
-            self.ui.checkBox_insert_index.setCheckable(False)
-            self.ui.checkBox_insert_index.setChecked(False)
 
         self.emit_signal_insert()
 

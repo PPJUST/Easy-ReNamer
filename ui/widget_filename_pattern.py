@@ -17,10 +17,9 @@ class WidgetFilenamePattern(QWidget):
         # self._show_layout_digit(False)  # 隐藏数字的更多选项控件
         # self._show_layout_char(False)# 隐藏字符的更多选项控件
         self.set_tips()
-        self.change_to_changed()
 
         self.ui.checkBox_pattern.stateChanged.connect(self.emit_signal)
-        self.ui.lineEdit_pattern.textChanged.connect(self.change_to_changed)
+        self.ui.lineEdit_pattern.textChanged.connect(self.pattern_changed)
         self.ui.spinBox_digit_start.valueChanged.connect(self.emit_signal)
         self.ui.spinBox_digit_step.valueChanged.connect(self.emit_signal)
         self.ui.spinBox_digit_length.valueChanged.connect(self.emit_signal)
@@ -53,8 +52,11 @@ class WidgetFilenamePattern(QWidget):
 
     def emit_signal(self):
         """发送信号"""
-        is_enable = self.ui.checkBox_pattern.isChecked()
         pattern = self.ui.lineEdit_pattern.text()
+        if len(pattern):
+            is_enable = self.ui.checkBox_pattern.isChecked()
+        else:
+            is_enable = False
 
         digit_start = self.ui.spinBox_digit_start.value()
         digit_step = self.ui.spinBox_digit_step.value()
@@ -73,15 +75,11 @@ class WidgetFilenamePattern(QWidget):
         self.signal_pattern.emit(rule_class)
         self._set_preview_tips(rule_class.get_preview())
 
-    def change_to_changed(self):
+    def pattern_changed(self):
         """选项变动"""
         text = self.ui.lineEdit_pattern.text()
         if len(text):
-            self.ui.checkBox_pattern.setCheckable(True)
             self.ui.checkBox_pattern.setChecked(True)
-        else:
-            self.ui.checkBox_pattern.setCheckable(False)
-            self.ui.checkBox_pattern.setChecked(False)
 
         self.emit_signal()
 
