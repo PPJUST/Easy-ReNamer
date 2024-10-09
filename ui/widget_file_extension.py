@@ -18,22 +18,26 @@ class WidgetFileExtension(QWidget):
 
         self.set_tips()
 
-        self.ui.checkBox_change_to.stateChanged.connect(self.emit_signal_change_to)
         self.ui.lineEdit_file_extension.textChanged.connect(self.change_to_changed)
+        self.ui.checkBox_change_to.stateChanged.connect(self.emit_signal_change_to)
+        self.ui.checkBox_change_to.stateChanged.connect(self.set_exclusive_group_change)
+        self.ui.checkBox_real_type.stateChanged.connect(self.emit_signal_real_type)
+        self.ui.checkBox_real_type.stateChanged.connect(self.set_exclusive_group_real)
         self.ui.checkBox_lowercase.stateChanged.connect(self.emit_signal_lowercase)
         self.ui.checkBox_lowercase.stateChanged.connect(self.set_exclusive_group_lowercase)
         self.ui.checkBox_capital.stateChanged.connect(self.emit_signal_capital)
         self.ui.checkBox_capital.stateChanged.connect(self.set_exclusive_group_capital)
-        self.ui.checkBox_real_type.stateChanged.connect(self.emit_signal_real_type)
-
-        # 屏蔽功能
-        self.ui.checkBox_real_type.setEnabled(False)
-        self.ui.checkBox_real_type.setVisible(False)
 
     def set_tips(self):
         """设置说明文本"""
         tips_change_to = '修改后缀名，请勿将文件的后缀名修改为空'
         self.ui.checkBox_change_to.setToolTip(tips_change_to)
+
+        tips_real_type = ('修改后缀名为文件的真实类型\n'
+                          '注意：\n'
+                          '  1. 仅支持部分常见的文件类型\n'
+                          '  2.结果可能存在偏差，请手工检查（例：分卷压缩包的分卷包会被识别为压缩包）')
+        self.ui.checkBox_real_type.setToolTip(tips_real_type)
 
     def emit_signal_change_to(self):
         """发送信号"""
@@ -90,6 +94,22 @@ class WidgetFileExtension(QWidget):
 
         if group_low.isChecked() and group_cap.isChecked():
             group_low.setChecked(False)
+
+    def set_exclusive_group_change(self):
+        """手工修改与自动修改互斥"""
+        group_change = self.ui.checkBox_change_to
+        group_real = self.ui.checkBox_real_type
+
+        if group_change.isChecked() and group_real.isChecked():
+            group_real.setChecked(False)
+
+    def set_exclusive_group_real(self):
+        """手工修改与自动修改互斥"""
+        group_change = self.ui.checkBox_change_to
+        group_real = self.ui.checkBox_real_type
+
+        if group_change.isChecked() and group_real.isChecked():
+            group_change.setChecked(False)
 
 
 if __name__ == '__main__':

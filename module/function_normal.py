@@ -88,7 +88,7 @@ def to_cht(text):
     return text_converted
 
 
-def guess_filetype(path):
+def guess_filetype(path) -> Union[str, bool]:
     """判断文件类型"""
     kind = filetype.guess(path)
     if kind is None:

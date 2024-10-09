@@ -68,6 +68,13 @@
        </layout>
       </item>
       <item>
+       <widget class="QCheckBox" name="checkBox_real_type">
+        <property name="text">
+         <string>扩展名改为真实文件类型*</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="checkBox_lowercase">
         <property name="text">
          <string>扩展名改为小写</string>
@@ -78,13 +85,6 @@
        <widget class="QCheckBox" name="checkBox_capital">
         <property name="text">
          <string>扩展名改为大写</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="checkBox_real_type">
-        <property name="text">
-         <string>扩展名改为真实文件类型*</string>
         </property>
        </widget>
       </item>

@@ -175,9 +175,12 @@ class MethodFileExtension:
         """改为真实文件类型"""
 
         def rename_method(self, filepath: str):
-            # 备忘录 需要传入原始路径，该功能不重要，暂时屏蔽（原调用方法传入的是单独的后缀名，该方法实际上无效）
-            if not os.path.exists(filepath) or os.path.isdir(filepath):
+            # 注意，该函数需要传入原始路径，原调用方法传入的是后缀名，需要单独处理传入的参数
+            if not os.path.exists(filepath) or not os.path.isfile(filepath):
                 return ''
 
             new_file_extension = function_normal.guess_filetype(filepath)
-            return new_file_extension
+            if new_file_extension:
+                return '.' + new_file_extension  # filetype库返回的后缀名不包含.，需要手工添加
+            else:
+                return ''

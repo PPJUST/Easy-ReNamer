@@ -5,6 +5,7 @@ from typing import Union
 
 from module import function_class
 from module.class_.class_rename_info import RenameInfo
+from module.class_.class_rename_method import MethodFileExtension
 from module.class_.class_rename_type import TypePattern, TypeConvert, TypeFileExtension, TypeNormal
 
 
@@ -71,7 +72,12 @@ class RenameRule:
             for rule_type in self._rule_file_extension_dict.values():
                 if rule_type and rule_type.is_enable:
                     rule = rule_type.rule
-                    guess_filetype = rule.rename_method(new_file_extension)
+                    # 单独处理“真实文件后缀名“选项
+                    if isinstance(rule, MethodFileExtension.ChangeToRealType):
+                        guess_filetype = rule.rename_method(path_need)
+                    else:
+                        guess_filetype = rule.rename_method(new_file_extension)
+
                     if guess_filetype:
                         new_file_extension = guess_filetype
 

@@ -27,6 +27,7 @@ class MainWindow(QMainWindow):
         pixmap = QPixmap()
         pixmap.loadFromData(base64.b64decode(app_base64))
         self.setWindowIcon(QIcon(pixmap))
+        self.setWindowTitle('Easy ReNamer v1.0.4')
 
         self.class_collect = RenameRule()
 
