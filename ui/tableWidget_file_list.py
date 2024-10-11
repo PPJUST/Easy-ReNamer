@@ -27,8 +27,8 @@ class TabWidgetFileList(QTableWidget):
         self.hideColumn(_title_line.index('路径'))  # 隐藏路径列，美观
         self.setColumnWidth(_title_line.index('类型'), _min_width)
         self.setColumnWidth(_title_line.index('进度'), _min_width)
-        self.setColumnWidth(_title_line.index('文件名'), (378 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为378
-        self.setColumnWidth(_title_line.index('预览'), (378 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为378
+        self.setColumnWidth(_title_line.index('文件名'), (345 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为378
+        self.setColumnWidth(_title_line.index('预览'), (345 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为378
 
         # ui设置
         self.setAcceptDrops(True)
