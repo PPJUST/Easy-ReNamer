@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>150</height>
+    <height>156</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -63,7 +63,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_delete_character"/>
+         <widget class="QLineEdit" name="lineEdit_delete_character">
+          <property name="placeholderText">
+           <string>需要删除的字符</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

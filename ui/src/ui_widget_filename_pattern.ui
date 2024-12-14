@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>490</width>
-    <height>369</height>
+    <width>483</width>
+    <height>426</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,6 +53,48 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget_preset_pattern" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <property name="leftMargin">
+       <number>3</number>
+      </property>
+      <property name="topMargin">
+       <number>3</number>
+      </property>
+      <property name="rightMargin">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="pushButton_preset_1">
+        <property name="text">
+         <string>&lt;父文件夹名&gt; &lt;原文件名&gt; | / *</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_preset_2">
+        <property name="text">
+         <string>&lt;原文件名&gt; #&lt;数字编号&gt; | * ###</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_preset_3">
+        <property name="text">
+         <string>&lt;原文件名&gt;_&lt;随机字符&gt; | *_?</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <widget class="Line" name="line_9">

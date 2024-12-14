@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_widget_insertDMgpiO.ui'
+## Form generated from reading UI file 'ui_widget_insertyhKFeU.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -23,7 +23,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(274, 125)
+        Form.resize(274, 130)
         self.verticalLayout_2 = QVBoxLayout(Form)
         self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -131,10 +131,14 @@ class Ui_Form(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.groupBox.setTitle(QCoreApplication.translate("Form", u"\u6dfb\u52a0", None))
         self.checkBox_add_prefix.setText(QCoreApplication.translate("Form", u"\u6587\u4ef6\u540d\u524d\u63d2\u5165", None))
+        self.lineEdit_add_prefix.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u63d2\u5165\u7684\u5b57\u7b26", None))
         self.checkBox_add_suffix.setText(QCoreApplication.translate("Form", u"\u6587\u4ef6\u540d\u540e\u6dfb\u52a0", None))
+        self.lineEdit_add_suffix.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u63d2\u5165\u7684\u5b57\u7b26", None))
         self.checkBox_insert_index.setText(QCoreApplication.translate("Form", u"\u5728\u7b2c", None))
         self.label.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26\u540e\u63d2\u5165", None))
+        self.lineEdit_insert_character.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u63d2\u5165\u7684\u5b57\u7b26", None))
         self.checkBox_insert_index_back.setText(QCoreApplication.translate("Form", u"\u5728\u5012\u6570\u7b2c", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26\u540e\u63d2\u5165", None))
+        self.lineEdit_insert_character_back.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u63d2\u5165\u7684\u5b57\u7b26", None))
     # retranslateUi
 

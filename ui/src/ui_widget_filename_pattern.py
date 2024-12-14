@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_widget_filename_patternwpdOyk.ui'
+## Form generated from reading UI file 'ui_widget_filename_patternBwQWsY.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,14 +17,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QFrame,
     QGridLayout, QHBoxLayout, QLabel, QLineEdit,
-    QSizePolicy, QSpacerItem, QSpinBox, QToolButton,
-    QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
+    QToolButton, QVBoxLayout, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(490, 369)
+        Form.resize(483, 426)
         self.verticalLayout_8 = QVBoxLayout(Form)
         self.verticalLayout_8.setSpacing(3)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
@@ -48,6 +48,30 @@ class Ui_Form(object):
 
 
         self.verticalLayout_8.addLayout(self.horizontalLayout_2)
+
+        self.widget_preset_pattern = QWidget(Form)
+        self.widget_preset_pattern.setObjectName(u"widget_preset_pattern")
+        self.verticalLayout_4 = QVBoxLayout(self.widget_preset_pattern)
+        self.verticalLayout_4.setSpacing(3)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(3, 3, 3, 3)
+        self.pushButton_preset_1 = QPushButton(self.widget_preset_pattern)
+        self.pushButton_preset_1.setObjectName(u"pushButton_preset_1")
+
+        self.verticalLayout_4.addWidget(self.pushButton_preset_1)
+
+        self.pushButton_preset_2 = QPushButton(self.widget_preset_pattern)
+        self.pushButton_preset_2.setObjectName(u"pushButton_preset_2")
+
+        self.verticalLayout_4.addWidget(self.pushButton_preset_2)
+
+        self.pushButton_preset_3 = QPushButton(self.widget_preset_pattern)
+        self.pushButton_preset_3.setObjectName(u"pushButton_preset_3")
+
+        self.verticalLayout_4.addWidget(self.pushButton_preset_3)
+
+
+        self.verticalLayout_8.addWidget(self.widget_preset_pattern)
 
         self.line_9 = QFrame(Form)
         self.line_9.setObjectName(u"line_9")
@@ -339,6 +363,9 @@ class Ui_Form(object):
         self.checkBox_pattern.setText(QCoreApplication.translate("Form", u"\u547d\u540d\u6a21\u677f\uff1a", None))
         self.toolButton_choose_pattern.setText(QCoreApplication.translate("Form", u"...", None))
         self.lineEdit_pattern.setPlaceholderText(QCoreApplication.translate("Form", u"\u4f8b: *_## \u4e3a<\u539f\u6587\u4ef6\u540d>_<\u6570\u5b57\u7f16\u53f7>", None))
+        self.pushButton_preset_1.setText(QCoreApplication.translate("Form", u"<\u7236\u6587\u4ef6\u5939\u540d> <\u539f\u6587\u4ef6\u540d> | / *", None))
+        self.pushButton_preset_2.setText(QCoreApplication.translate("Form", u"<\u539f\u6587\u4ef6\u540d> #<\u6570\u5b57\u7f16\u53f7> | * ###", None))
+        self.pushButton_preset_3.setText(QCoreApplication.translate("Form", u"<\u539f\u6587\u4ef6\u540d>_<\u968f\u673a\u5b57\u7b26> | *_?", None))
         self.label_10.setText(QCoreApplication.translate("Form", u"\u7b26\u53f7\u8bf4\u660e\uff1a", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"* \u63d2\u5165\u539f\u6587\u4ef6\u540d", None))
         self.label_5.setText(QCoreApplication.translate("Form", u"##\u6216\"\n"

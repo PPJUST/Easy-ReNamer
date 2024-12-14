@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>274</width>
-    <height>125</height>
+    <height>130</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,7 +60,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_add_prefix"/>
+         <widget class="QLineEdit" name="lineEdit_add_prefix">
+          <property name="placeholderText">
+           <string>需要插入的字符</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -74,7 +78,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_add_suffix"/>
+         <widget class="QLineEdit" name="lineEdit_add_suffix">
+          <property name="placeholderText">
+           <string>需要插入的字符</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -105,7 +113,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_insert_character"/>
+         <widget class="QLineEdit" name="lineEdit_insert_character">
+          <property name="placeholderText">
+           <string>需要插入的字符</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -136,7 +148,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_insert_character_back"/>
+         <widget class="QLineEdit" name="lineEdit_insert_character_back">
+          <property name="placeholderText">
+           <string>需要插入的字符</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

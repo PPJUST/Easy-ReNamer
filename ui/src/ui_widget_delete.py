@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_widget_deleteVJTELg.ui'
+## Form generated from reading UI file 'ui_widget_deletePEMkKB.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -23,7 +23,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(320, 150)
+        Form.resize(320, 156)
         self.verticalLayout = QVBoxLayout(Form)
         self.verticalLayout.setSpacing(3)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -190,6 +190,7 @@ class Ui_Form(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.groupBox.setTitle(QCoreApplication.translate("Form", u"\u5220\u9664", None))
         self.checkBox_delete_character.setText(QCoreApplication.translate("Form", u"\u5220\u9664\u6587\u4ef6\u540d\u4e2d\u7684", None))
+        self.lineEdit_delete_character.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u5220\u9664\u7684\u5b57\u7b26", None))
         self.checkBox_delete_index.setText(QCoreApplication.translate("Form", u"\u4ece\u7b2c", None))
         self.label.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26\u5f00\u59cb\uff0c\u5220\u9664", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26", None))

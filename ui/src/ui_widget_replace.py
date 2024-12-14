@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_widget_replacenkFyfD.ui'
+## Form generated from reading UI file 'ui_widget_replaceibnmra.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -73,7 +73,10 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.groupBox.setTitle(QCoreApplication.translate("Form", u"\u66ff\u6362", None))
+        self.lineEdit_old_character.setText("")
+        self.lineEdit_old_character.setPlaceholderText(QCoreApplication.translate("Form", u"\u88ab\u66ff\u6362\u7684\u5b57\u7b26", None))
         self.checkBox_replace.setText(QCoreApplication.translate("Form", u"\u5c06\u6587\u4ef6\u540d\u4e2d\u7684", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"\u66ff\u6362\u4e3a", None))
+        self.lineEdit_new_character.setPlaceholderText(QCoreApplication.translate("Form", u"\u65b0\u7684\u5b57\u7b26", None))
     # retranslateUi
 

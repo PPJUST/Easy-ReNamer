@@ -2,7 +2,7 @@ import base64
 
 from PySide6.QtCore import Signal
 from PySide6.QtGui import QFont, QPixmap, QIcon
-from PySide6.QtWidgets import QWidget, QApplication
+from PySide6.QtWidgets import QWidget, QApplication, QPushButton
 
 from module.class_.class_rename_type import TypeNormal, TypePattern
 from res.icon import list_base64
@@ -21,6 +21,7 @@ class WidgetFilenamePattern(QWidget):
         # self._show_layout_char(False)# 隐藏字符的更多选项控件
         self.set_tips()
         self._set_icon()
+        self.ui.widget_preset_pattern.setVisible(False)
 
         self.ui.checkBox_pattern.stateChanged.connect(self.emit_signal)
         self.ui.lineEdit_pattern.textChanged.connect(self.pattern_changed)
@@ -33,8 +34,11 @@ class WidgetFilenamePattern(QWidget):
         self.ui.checkBox_random_capital.stateChanged.connect(self.emit_signal)
         self.ui.checkBox_random_punctuation.stateChanged.connect(self.emit_signal)
         self.ui.spinBox_char_length.valueChanged.connect(self.emit_signal)
-        self.ui.toolButton_choose_pattern.clicked.connect(self.show_patterns)
+        self.ui.toolButton_choose_pattern.clicked.connect(self.show_preset_patterns)
         # self.ui.lineEdit_pattern.textChanged.connect(self._show_more_option)  # 用于隐藏/显示数字、字符的更多选项
+        self.ui.pushButton_preset_1.clicked.connect(self.set_preset_pattern)
+        self.ui.pushButton_preset_2.clicked.connect(self.set_preset_pattern)
+        self.ui.pushButton_preset_3.clicked.connect(self.set_preset_pattern)
 
         # 设置字体
         font = QFont()
@@ -60,9 +64,16 @@ class WidgetFilenamePattern(QWidget):
         self.ui.checkBox_pattern.setToolTip(tips_pattern)
         self.ui.lineEdit_pattern.setToolTip(tips_pattern)
 
-    def show_patterns(self):
-        """显示预制模板"""
-        pass  # 备忘录
+    def show_preset_patterns(self):
+        """显示预设模板"""
+        self.ui.widget_preset_pattern.setVisible(not self.ui.widget_preset_pattern.isVisible())
+
+    def set_preset_pattern(self):
+        """设置为预设模板"""
+        button: QPushButton = self.sender()
+        button_text = button.text()
+        pattern = button_text.split('|')[1].strip()
+        self.ui.lineEdit_pattern.setText(pattern)
 
     def emit_signal(self):
         """发送信号"""

@@ -71,7 +71,6 @@ class RenameInfo:
         self.filename_renamed = filetitle + self.file_extension_renamed
         self.path_renamed = os.path.normpath(os.path.join(self.parent_dirpath, self.filename_renamed))
 
-
     def update_cancel_rename_no_dup(self):
         """更新撤销重命名信息（无重复文件名的情况）"""
         self.is_dup_cancel = False

@@ -63,7 +63,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_file_extension"/>
+         <widget class="QLineEdit" name="lineEdit_file_extension">
+          <property name="placeholderText">
+           <string>新的扩展名</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
