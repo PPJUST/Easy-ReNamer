@@ -18,7 +18,7 @@ class WidgetFileList(QWidget):
         self.ui.setupUi(self)
 
         # 添加列表控件
-        self.tableWidget_file_list = TabWidgetFileList()
+        self.tableWidget_file_list = TabWidgetFileList(self)
         self.ui.verticalLayout__place.addWidget(self.tableWidget_file_list)
         # 设置图标
         self.set_tips()

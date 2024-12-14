@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>244</width>
-    <height>108</height>
+    <width>274</width>
+    <height>125</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,7 +55,7 @@
         <item>
          <widget class="QCheckBox" name="checkBox_add_prefix">
           <property name="text">
-           <string>文件名前添加</string>
+           <string>文件名前插入</string>
           </property>
          </widget>
         </item>
@@ -100,12 +100,43 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>个字符后添加</string>
+           <string>个字符后插入</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEdit_insert_character"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QCheckBox" name="checkBox_insert_index_back">
+          <property name="text">
+           <string>在倒数第</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_index_back">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>999</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>个字符后插入</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_insert_character_back"/>
         </item>
        </layout>
       </item>

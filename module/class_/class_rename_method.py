@@ -29,6 +29,9 @@ class MethodNormal:
             new_filetitle = filetitle[0:self.index] + self.char + filetitle[self.index:]
             return new_filetitle
 
+    class InsertBack(Insert):
+        """插入（反向）"""
+
     class DeleteIndex(_Model):
         """删除"""
 
@@ -51,6 +54,9 @@ class MethodNormal:
                 new_filetitle = filetitle[0:index] + filetitle[index + self.count:]
 
             return new_filetitle
+
+    class DeleteIndexBack(DeleteIndex):
+        """删除（反向）"""
 
     class Replace(_Model):
         """替换"""

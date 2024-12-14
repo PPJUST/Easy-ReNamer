@@ -1,8 +1,11 @@
+import base64
+
 from PySide6.QtCore import Signal
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QFont, QPixmap, QIcon
 from PySide6.QtWidgets import QWidget, QApplication
 
 from module.class_.class_rename_type import TypeNormal, TypePattern
+from res.icon import list_base64
 from ui.src.ui_widget_filename_pattern import Ui_Form
 
 
@@ -17,6 +20,7 @@ class WidgetFilenamePattern(QWidget):
         # self._show_layout_digit(False)  # 隐藏数字的更多选项控件
         # self._show_layout_char(False)# 隐藏字符的更多选项控件
         self.set_tips()
+        self._set_icon()
 
         self.ui.checkBox_pattern.stateChanged.connect(self.emit_signal)
         self.ui.lineEdit_pattern.textChanged.connect(self.pattern_changed)
@@ -29,13 +33,19 @@ class WidgetFilenamePattern(QWidget):
         self.ui.checkBox_random_capital.stateChanged.connect(self.emit_signal)
         self.ui.checkBox_random_punctuation.stateChanged.connect(self.emit_signal)
         self.ui.spinBox_char_length.valueChanged.connect(self.emit_signal)
-
+        self.ui.toolButton_choose_pattern.clicked.connect(self.show_patterns)
         # self.ui.lineEdit_pattern.textChanged.connect(self._show_more_option)  # 用于隐藏/显示数字、字符的更多选项
 
         # 设置字体
         font = QFont()
-        font.setPointSize(12)
+        font.setPointSize(10)
         self.ui.lineEdit_pattern.setFont(font)
+
+    def _set_icon(self):
+        """设置图标"""
+        pixmap = QPixmap()
+        pixmap.loadFromData(base64.b64decode(list_base64))
+        self.ui.toolButton_choose_pattern.setIcon(QIcon(pixmap))
 
     def set_tips(self):
         """设置说明文本"""
@@ -49,6 +59,10 @@ class WidgetFilenamePattern(QWidget):
                         '\n4.在文件名后添加数字编号（即<原文件名>#<数字编号>）：*###')
         self.ui.checkBox_pattern.setToolTip(tips_pattern)
         self.ui.lineEdit_pattern.setToolTip(tips_pattern)
+
+    def show_patterns(self):
+        """显示预制模板"""
+        pass  # 备忘录
 
     def emit_signal(self):
         """发送信号"""
@@ -80,6 +94,8 @@ class WidgetFilenamePattern(QWidget):
         text = self.ui.lineEdit_pattern.text()
         if len(text):
             self.ui.checkBox_pattern.setChecked(True)
+        else:
+            self.ui.checkBox_pattern.setChecked(False)
 
         self.emit_signal()
 

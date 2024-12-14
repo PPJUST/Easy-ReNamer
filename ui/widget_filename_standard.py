@@ -26,6 +26,8 @@ class WidgetFilenameStandard(QWidget):
         self.ui.comboBox_character.currentTextChanged.connect(self.character_changed)
         self.ui.checkBox_excess_spaces.stateChanged.connect(self.emit_signal_excess_spaces)
 
+        self.ui.checkBox_excess_spaces.setChecked(True)
+
     def set_tips(self):
         """设置说明文本"""
         tips_auto_dig = '删除两端的空格、连续的空格'

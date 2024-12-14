@@ -55,6 +55,8 @@ class WidgetFileExtension(QWidget):
         text = self.ui.lineEdit_file_extension.text()
         if len(text.strip()):
             self.ui.checkBox_change_to.setChecked(True)
+        else:
+            self.ui.checkBox_change_to.setChecked(False)
 
         self.emit_signal_change_to()
 

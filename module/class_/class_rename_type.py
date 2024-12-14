@@ -1,12 +1,11 @@
 # 具体的重命名类型类，用于连接主程序和具体方法
 import os
 import random
+import re
 import string
 
 from module import function_normal
 from module.class_.class_rename_method import MethodNormal, MethodFileExtension, MethodConvert
-
-import re
 
 
 class TypePattern:
@@ -145,6 +144,13 @@ class TypeNormal:
             super().__init__(is_enable)
             self.rule = MethodNormal.Insert(index, char)
 
+    class InsertBack(_Model):
+        """插入字符（反向）"""
+
+        def __init__(self, is_enable, index, char):
+            super().__init__(is_enable)
+            self.rule = MethodNormal.InsertBack(-index, char)
+
     class DeleteChar(_Model):
         """删除字符"""
 
@@ -159,12 +165,26 @@ class TypeNormal:
             super().__init__(is_enable)
             self.rule = MethodNormal.DeleteIndex(start_index, delete_count)
 
+    class DeleteIndexBack(_Model):
+        """删除N个字符（反向）"""
+
+        def __init__(self, is_enable, start_index, delete_count):
+            super().__init__(is_enable)
+            self.rule = MethodNormal.DeleteIndexBack(-start_index, delete_count)
+
     class DeleteIndexAfter(_Model):
         """删除N个字符后的所有字符"""
 
         def __init__(self, is_enable, index):
             super().__init__(is_enable)
             self.rule = MethodNormal.DeleteIndex(index + 1, 999)  # 该类型为n个字符后，所以需要+1.删除字符个数为999即可
+
+    class DeleteIndexAfterBack(_Model):
+        """删除N个字符后的所有字符（反向）"""
+
+        def __init__(self, is_enable, index):
+            super().__init__(is_enable)
+            self.rule = MethodNormal.DeleteIndexBack(-index, 999)  # 该类型为n个字符后，所以需要+1.删除字符个数为999即可
 
 
 class TypeConvert:

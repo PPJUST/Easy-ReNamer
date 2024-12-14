@@ -34,8 +34,9 @@ class WidgetReplace(QWidget):
         text_old = self.ui.lineEdit_old_character.text()
         text_new = self.ui.lineEdit_new_character.text()
         if len(text_old) and len(text_new):
-            self.ui.checkBox_replace.setCheckable(True)
             self.ui.checkBox_replace.setChecked(True)
+        else:
+            self.ui.checkBox_replace.setChecked(False)
 
         self.emit_signal()
 

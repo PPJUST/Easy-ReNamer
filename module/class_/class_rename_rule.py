@@ -96,9 +96,12 @@ class RenameRule:
         # 添加增删查改类，替换>删除>添加
         self._rule_filename_dict[TypeNormal.Replace] = None
         self._rule_filename_dict[TypeNormal.DeleteIndex] = None
+        self._rule_filename_dict[TypeNormal.DeleteIndexBack] = None
         self._rule_filename_dict[TypeNormal.DeleteIndexAfter] = None
+        self._rule_filename_dict[TypeNormal.DeleteIndexAfterBack] = None
         self._rule_filename_dict[TypeNormal.DeleteChar] = None
         self._rule_filename_dict[TypeNormal.Insert] = None
+        self._rule_filename_dict[TypeNormal.InsertBack] = None
         self._rule_filename_dict[TypeNormal.AddPrefix] = None
         self._rule_filename_dict[TypeNormal.AddSuffix] = None
 

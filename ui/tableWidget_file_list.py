@@ -266,7 +266,7 @@ class TabWidgetFileList(QTableWidget):
         paths = []
         for row in range(self.rowCount()):
             # 先尝试提取单元格中的重命名信息类，如果不存在则提取路径列的文本
-            info_class:RenameInfo = self.item(row, _title_line.index('文件名')).data(_data_role)
+            info_class: RenameInfo = self.item(row, _title_line.index('文件名')).data(_data_role)
             if info_class:
                 path = info_class.path_need
             else:
@@ -421,3 +421,7 @@ class TabWidgetFileList(QTableWidget):
                 paths.append(path)
             self.insert_path_item(paths)
             event.acceptProposedAction()
+
+    def resizeEvent(self, event):
+        # 更新列宽
+        print(self.parent().size())  # 备忘录
