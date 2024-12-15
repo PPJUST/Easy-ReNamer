@@ -11,5 +11,6 @@ if __name__ == '__main__':
     app.setPalette(palette)
     show_ui = MainWindow()
     show_ui.setMinimumSize(800, 530)
+    show_ui.setWindowTitle('Easy ReNamer v1.0.5')
     show_ui.show()
     app.exec()
