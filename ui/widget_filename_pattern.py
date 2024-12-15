@@ -75,6 +75,8 @@ class WidgetFilenamePattern(QWidget):
         pattern = button_text.split('|')[1].strip()
         self.ui.lineEdit_pattern.setText(pattern)
 
+        self.show_preset_patterns()
+
     def emit_signal(self):
         """发送信号"""
         pattern = self.ui.lineEdit_pattern.text()
