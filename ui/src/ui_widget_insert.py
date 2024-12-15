@@ -1,23 +1,29 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_widget_insertVLPvhf.ui'
+## Form generated from reading UI file 'ui_widget_insertyhKFeU.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.1.3
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *  # type: ignore
-from PySide6.QtGui import *  # type: ignore
-from PySide6.QtWidgets import *  # type: ignore
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QGroupBox, QHBoxLayout,
+    QLabel, QLineEdit, QSizePolicy, QSpinBox,
+    QVBoxLayout, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(244, 108)
+        Form.resize(274, 130)
         self.verticalLayout_2 = QVBoxLayout(Form)
         self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -85,6 +91,33 @@ class Ui_Form(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_4)
 
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.checkBox_insert_index_back = QCheckBox(self.groupBox)
+        self.checkBox_insert_index_back.setObjectName(u"checkBox_insert_index_back")
+
+        self.horizontalLayout_5.addWidget(self.checkBox_insert_index_back)
+
+        self.spinBox_index_back = QSpinBox(self.groupBox)
+        self.spinBox_index_back.setObjectName(u"spinBox_index_back")
+        self.spinBox_index_back.setMinimum(1)
+        self.spinBox_index_back.setMaximum(999)
+
+        self.horizontalLayout_5.addWidget(self.spinBox_index_back)
+
+        self.label_2 = QLabel(self.groupBox)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout_5.addWidget(self.label_2)
+
+        self.lineEdit_insert_character_back = QLineEdit(self.groupBox)
+        self.lineEdit_insert_character_back.setObjectName(u"lineEdit_insert_character_back")
+
+        self.horizontalLayout_5.addWidget(self.lineEdit_insert_character_back)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
+
 
         self.verticalLayout_2.addWidget(self.groupBox)
 
@@ -97,9 +130,15 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.groupBox.setTitle(QCoreApplication.translate("Form", u"\u6dfb\u52a0", None))
-        self.checkBox_add_prefix.setText(QCoreApplication.translate("Form", u"\u6587\u4ef6\u540d\u524d\u6dfb\u52a0", None))
+        self.checkBox_add_prefix.setText(QCoreApplication.translate("Form", u"\u6587\u4ef6\u540d\u524d\u63d2\u5165", None))
+        self.lineEdit_add_prefix.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u63d2\u5165\u7684\u5b57\u7b26", None))
         self.checkBox_add_suffix.setText(QCoreApplication.translate("Form", u"\u6587\u4ef6\u540d\u540e\u6dfb\u52a0", None))
+        self.lineEdit_add_suffix.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u63d2\u5165\u7684\u5b57\u7b26", None))
         self.checkBox_insert_index.setText(QCoreApplication.translate("Form", u"\u5728\u7b2c", None))
-        self.label.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26\u540e\u6dfb\u52a0", None))
+        self.label.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26\u540e\u63d2\u5165", None))
+        self.lineEdit_insert_character.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u63d2\u5165\u7684\u5b57\u7b26", None))
+        self.checkBox_insert_index_back.setText(QCoreApplication.translate("Form", u"\u5728\u5012\u6570\u7b2c", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"\u4e2a\u5b57\u7b26\u540e\u63d2\u5165", None))
+        self.lineEdit_insert_character_back.setPlaceholderText(QCoreApplication.translate("Form", u"\u9700\u8981\u63d2\u5165\u7684\u5b57\u7b26", None))
     # retranslateUi
 

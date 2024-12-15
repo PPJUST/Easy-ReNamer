@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>301</width>
-    <height>108</height>
+    <width>320</width>
+    <height>156</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -63,7 +63,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_delete_character"/>
+         <widget class="QLineEdit" name="lineEdit_delete_character">
+          <property name="placeholderText">
+           <string>需要删除的字符</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -82,7 +86,7 @@
         <item>
          <widget class="QSpinBox" name="spinBox_index">
           <property name="minimum">
-           <number>-999</number>
+           <number>1</number>
           </property>
           <property name="maximum">
            <number>999</number>
@@ -116,7 +120,68 @@
         <item>
          <spacer name="horizontalSpacer">
           <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QCheckBox" name="checkBox_delete_index_back">
+          <property name="text">
+           <string>从倒数第</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_index_back">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>999</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>个字符开始，删除</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_delete_count_back">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>999</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>个字符</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -143,7 +208,7 @@
         <item>
          <widget class="QSpinBox" name="spinBox_index_del_after">
           <property name="minimum">
-           <number>-999</number>
+           <number>0</number>
           </property>
           <property name="maximum">
            <number>999</number>
@@ -152,6 +217,37 @@
         </item>
         <item>
          <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>个字符后的全部字符</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,0,1">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QCheckBox" name="checkBox_delete_index_after_back">
+          <property name="text">
+           <string>删除倒数第</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_index_del_after_back">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>999</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
           <property name="text">
            <string>个字符后的全部字符</string>
           </property>

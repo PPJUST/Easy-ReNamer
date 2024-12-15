@@ -10,6 +10,6 @@ if __name__ == '__main__':
     palette.setColor(QPalette.Window, QColor(255, 255, 255))
     app.setPalette(palette)
     show_ui = MainWindow()
-    show_ui.setFixedSize(800, 530)
+    show_ui.setMinimumSize(800, 530)
     show_ui.show()
     app.exec()

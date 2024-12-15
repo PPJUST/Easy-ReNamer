@@ -10,7 +10,7 @@ from module.class_.class_rename_info import RenameInfo
 from module.class_.class_rename_rule import RenameRule
 
 _title_line = ['类型', '路径', '文件名', '预览', '进度']
-_min_width = 30
+_column_width = 30
 _max_height = 16
 _data_role = 1000
 
@@ -25,10 +25,8 @@ class TabWidgetFileList(QTableWidget):
         self.setColumnCount(len(_title_line))
         self.setHorizontalHeaderLabels(_title_line)
         self.hideColumn(_title_line.index('路径'))  # 隐藏路径列，美观
-        self.setColumnWidth(_title_line.index('类型'), _min_width)
-        self.setColumnWidth(_title_line.index('进度'), _min_width)
-        self.setColumnWidth(_title_line.index('文件名'), (345 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为378
-        self.setColumnWidth(_title_line.index('预览'), (345 - _min_width * 2) // 2)  # 固定大小时，控件的宽约为378
+        self.setColumnWidth(_title_line.index('类型'), _column_width)
+        self.setColumnWidth(_title_line.index('进度'), _column_width)
 
         # ui设置
         self.setAcceptDrops(True)
@@ -266,7 +264,7 @@ class TabWidgetFileList(QTableWidget):
         paths = []
         for row in range(self.rowCount()):
             # 先尝试提取单元格中的重命名信息类，如果不存在则提取路径列的文本
-            info_class:RenameInfo = self.item(row, _title_line.index('文件名')).data(_data_role)
+            info_class: RenameInfo = self.item(row, _title_line.index('文件名')).data(_data_role)
             if info_class:
                 path = info_class.path_need
             else:
@@ -421,3 +419,13 @@ class TabWidgetFileList(QTableWidget):
                 paths.append(path)
             self.insert_path_item(paths)
             event.acceptProposedAction()
+
+    def resizeEvent(self, event):
+        # 更新列宽
+        parent_size = self.size()
+        max_width = parent_size.width()
+        width_type = self.columnWidth(_title_line.index('类型'))
+        width_progress = self.columnWidth(_title_line.index('进度'))
+        width_filename = self.columnWidth(_title_line.index('文件名'))
+        width_preview = max_width - width_type - width_progress - width_filename - 3
+        self.setColumnWidth(_title_line.index('预览'), width_preview)

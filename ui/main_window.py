@@ -56,14 +56,17 @@ class MainWindow(QMainWindow):
         self.widget_insert = WidgetInsert()
         self.ui.verticalLayout_place.addWidget(self.widget_insert)
         self.widget_insert.signal_insert.connect(self.collect_rename_rule)
+        self.widget_insert.signal_insert_back.connect(self.collect_rename_rule)
         self.widget_insert.signal_add_prefix.connect(self.collect_rename_rule)
         self.widget_insert.signal_add_suffix.connect(self.collect_rename_rule)
         # 删
         self.widget_delete = WidgetDelete()
         self.ui.verticalLayout_place.addWidget(self.widget_delete)
-        self.widget_delete.signal_delete_index.connect(self.collect_rename_rule)
         self.widget_delete.signal_delete_character.connect(self.collect_rename_rule)
+        self.widget_delete.signal_delete_index.connect(self.collect_rename_rule)
+        self.widget_delete.signal_delete_index_back.connect(self.collect_rename_rule)
         self.widget_delete.signal_delete_index_after.connect(self.collect_rename_rule)
+        self.widget_delete.signal_delete_index_after_back.connect(self.collect_rename_rule)
         # 改
         self.widget_replace = WidgetReplace()
         self.ui.verticalLayout_place.addWidget(self.widget_replace)
@@ -71,7 +74,7 @@ class MainWindow(QMainWindow):
 
         # 添加控件组3
         # 文件列表
-        self.widget_file_list = WidgetFileList()
+        self.widget_file_list = WidgetFileList(self)
         self.ui.widget_file_list.layout().addWidget(self.widget_file_list)
         # 执行功能区
         self.widget_exec = WidgetExec()
