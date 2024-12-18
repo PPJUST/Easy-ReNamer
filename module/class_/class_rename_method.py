@@ -131,7 +131,7 @@ class MethodConvert:
                 if filetitle[0] == ' ' or filetitle[-1] == ' ':
                     filetitle = filetitle.strip(' ')
                 elif '  ' in filetitle:
-                    filetitle = filetitle.replace('  ', '')
+                    filetitle = filetitle.replace('  ', ' ')
                 else:
                     break
 
